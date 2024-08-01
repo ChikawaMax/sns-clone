@@ -3,6 +3,8 @@ import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 
+export const dynamic = 'force-dynamic';
+
 export const NewPost = ({ user }: { user: User }) => {
   const addPost = async (formData: FormData) => {
     'use server';

@@ -6,6 +6,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/navigation';
 import { channel } from 'diagnostics_channel';
 import Image from 'next/image';
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 
 export const Post = ({ posts }: { posts: PostWithAuthor[] }) => {
   const [optimisticPost, addOptimisticPost] = useOptimistic<
@@ -51,7 +52,7 @@ export const Post = ({ posts }: { posts: PostWithAuthor[] }) => {
         <div key={post.id} className="border-gray-900 py-4 px-8 flex">
           <div className="w-12 h-12">
             <Image
-              src={post.author.avatar_url || '/default-avatar.png'}
+              src={post.author.avatar_url as string | StaticImport}
               alt="user icon"
               width={48}
               height={48}
